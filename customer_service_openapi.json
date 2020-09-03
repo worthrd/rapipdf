@@ -1,0 +1,1067 @@
+{
+    "components": {
+        "schemas": {
+            "AddressDto": {
+                "properties": {
+                    "city": {
+                        "type": "string"
+                    },
+                    "country": {
+                        "type": "string"
+                    },
+                    "postcode": {
+                        "type": "string"
+                    },
+                    "stateOrProvince": {
+                        "type": "string"
+                    },
+                    "streetOne": {
+                        "type": "string"
+                    },
+                    "streetTwo": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Agreement": {
+                "properties": {
+                    "customer": {
+                        "$ref": "#/components/schemas/Customer"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "format": "int64",
+                        "type": "integer"
+                    },
+                    "value": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "AgreementDto": {
+                "properties": {
+                    "description": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "description",
+                    "value"
+                ],
+                "type": "object"
+            },
+            "Characteristic": {
+                "properties": {
+                    "customer": {
+                        "$ref": "#/components/schemas/Customer"
+                    },
+                    "id": {
+                        "format": "int64",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "CharacteristicDto": {
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "ContactMedium": {
+                "properties": {
+                    "customer": {
+                        "$ref": "#/components/schemas/Customer"
+                    },
+                    "id": {
+                        "format": "int64",
+                        "type": "integer"
+                    },
+                    "mediumCharacteristic": {
+                        "$ref": "#/components/schemas/MediumCharacteristic"
+                    },
+                    "preferred": {
+                        "type": "boolean"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "validFor": {
+                        "$ref": "#/components/schemas/ValidFor"
+                    }
+                },
+                "type": "object"
+            },
+            "ContactMediumDto": {
+                "properties": {
+                    "city": {
+                        "type": "string"
+                    },
+                    "country": {
+                        "type": "string"
+                    },
+                    "emailAddress": {
+                        "type": "string"
+                    },
+                    "number": {
+                        "type": "string"
+                    },
+                    "postcode": {
+                        "type": "string"
+                    },
+                    "stateOrProvince": {
+                        "type": "string"
+                    },
+                    "streetOne": {
+                        "type": "string"
+                    },
+                    "streetTwo": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "CreateCustomerRequest": {
+                "properties": {
+                    "address": {
+                        "$ref": "#/components/schemas/AddressDto"
+                    },
+                    "agreementEmail": {
+                        "type": "string"
+                    },
+                    "birthDate": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "characteristics": {
+                        "items": {
+                            "$ref": "#/components/schemas/CharacteristicDto"
+                        },
+                        "type": "array"
+                    },
+                    "communicationEmail": {
+                        "type": "string"
+                    },
+                    "countryCode": {
+                        "type": "string"
+                    },
+                    "deviceId": {
+                        "type": "string"
+                    },
+                    "etkEmailPermission": {
+                        "type": "boolean"
+                    },
+                    "etkPhonePermission": {
+                        "type": "boolean"
+                    },
+                    "etkSmsPermission": {
+                        "type": "boolean"
+                    },
+                    "firmName": {
+                        "type": "string"
+                    },
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "kvkkPermission": {
+                        "type": "boolean"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    },
+                    "mobilePhone": {
+                        "pattern": "^\\d{8,}$",
+                        "type": "string"
+                    },
+                    "nationalId": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "firmName"
+                ],
+                "type": "object"
+            },
+            "Customer": {
+                "properties": {
+                    "agreements": {
+                        "items": {
+                            "$ref": "#/components/schemas/Agreement"
+                        },
+                        "type": "array"
+                    },
+                    "birthDate": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "characteristic": {
+                        "items": {
+                            "$ref": "#/components/schemas/Characteristic"
+                        },
+                        "type": "array"
+                    },
+                    "contactMedium": {
+                        "items": {
+                            "$ref": "#/components/schemas/ContactMedium"
+                        },
+                        "type": "array"
+                    },
+                    "countryCode": {
+                        "type": "string"
+                    },
+                    "firm": {
+                        "$ref": "#/components/schemas/Firm"
+                    },
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "format": "int64",
+                        "type": "integer"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    },
+                    "nationalId": {
+                        "type": "string"
+                    },
+                    "permissions": {
+                        "items": {
+                            "$ref": "#/components/schemas/Permission"
+                        },
+                        "type": "array"
+                    },
+                    "relatedParty": {
+                        "$ref": "#/components/schemas/RelatedParty"
+                    },
+                    "status": {
+                        "enum": [
+                            "POTENTIAL",
+                            "ACTIVE",
+                            "DEACTIVE"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Firm": {
+                "properties": {
+                    "firmIdentity": {
+                        "format": "int64",
+                        "type": "integer"
+                    },
+                    "idfirm": {
+                        "format": "int64",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "parentFirm": {
+                        "$ref": "#/components/schemas/Firm"
+                    }
+                },
+                "type": "object"
+            },
+            "MediumCharacteristic": {
+                "properties": {
+                    "city": {
+                        "type": "string"
+                    },
+                    "contactMedium": {
+                        "$ref": "#/components/schemas/ContactMedium"
+                    },
+                    "country": {
+                        "type": "string"
+                    },
+                    "emailAddress": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "format": "int64",
+                        "type": "integer"
+                    },
+                    "number": {
+                        "type": "string"
+                    },
+                    "postcode": {
+                        "type": "string"
+                    },
+                    "stateOrProvince": {
+                        "type": "string"
+                    },
+                    "streetOne": {
+                        "type": "string"
+                    },
+                    "streetTwo": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Permission": {
+                "properties": {
+                    "customer": {
+                        "$ref": "#/components/schemas/Customer"
+                    },
+                    "grantedById": {
+                        "format": "int32",
+                        "type": "integer"
+                    },
+                    "id": {
+                        "format": "int64",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "PermissionDto": {
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "RelatedParty": {
+                "properties": {
+                    "customer": {
+                        "$ref": "#/components/schemas/Customer"
+                    },
+                    "id": {
+                        "format": "int64",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "role": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "UpdateCustomerRequest": {
+                "properties": {
+                    "address": {
+                        "$ref": "#/components/schemas/AddressDto"
+                    },
+                    "agreementEmail": {
+                        "type": "string"
+                    },
+                    "birthDate": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "characteristics": {
+                        "items": {
+                            "$ref": "#/components/schemas/CharacteristicDto"
+                        },
+                        "type": "array"
+                    },
+                    "communicationEmail": {
+                        "type": "string"
+                    },
+                    "countryCode": {
+                        "type": "string"
+                    },
+                    "firmName": {
+                        "type": "string"
+                    },
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "format": "int64",
+                        "type": "integer"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    },
+                    "mobilePhone": {
+                        "pattern": "^\\d{8,}$",
+                        "type": "string"
+                    },
+                    "nationalId": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "ValidFor": {
+                "properties": {
+                    "contactMedium": {
+                        "$ref": "#/components/schemas/ContactMedium"
+                    },
+                    "endDateTime": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "id": {
+                        "format": "int64",
+                        "type": "integer"
+                    },
+                    "startDateTime": {
+                        "format": "date-time",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "bearerScheme": {
+                "bearerFormat": "JWT",
+                "scheme": "bearer",
+                "type": "http"
+            }
+        }
+    },
+    "info": {
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://springdoc.org"
+        },
+        "title": "Customer Service API",
+        "version": "V0"
+    },
+    "openapi": "3.0.1",
+    "paths": {
+        "/customers": {
+            "get": {
+                "description": "Returns list of customers with given criterias",
+                "operationId": "getAll",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "filter",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Correlation Id",
+                        "in": "header",
+                        "name": "x-transaction-id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "items": {
+                                        "$ref": "#/components/schemas/Customer"
+                                    },
+                                    "type": "array"
+                                }
+                            }
+                        },
+                        "description": "default response"
+                    }
+                },
+                "tags": [
+                    "customer-rest-service"
+                ]
+            },
+            "post": {
+                "description": "Creates a customer",
+                "operationId": "create",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "channel",
+                        "required": true,
+                        "schema": {
+                            "enum": [
+                                "FIZY",
+                                "LIFEBOX",
+                                "SOM",
+                                "SARDIS",
+                                "DSS"
+                            ],
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Correlation Id",
+                        "in": "header",
+                        "name": "x-transaction-id"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateCustomerRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "format": "int64",
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        "description": "default response"
+                    }
+                },
+                "tags": [
+                    "customer-rest-service"
+                ]
+            },
+            "put": {
+                "description": "Updates a customer",
+                "operationId": "update",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "channel",
+                        "required": true,
+                        "schema": {
+                            "enum": [
+                                "FIZY",
+                                "LIFEBOX",
+                                "SOM",
+                                "SARDIS",
+                                "DSS"
+                            ],
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Correlation Id",
+                        "in": "header",
+                        "name": "x-transaction-id"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateCustomerRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Customer"
+                                }
+                            }
+                        },
+                        "description": "default response"
+                    }
+                },
+                "tags": [
+                    "customer-rest-service"
+                ]
+            }
+        },
+        "/customers/firms": {
+            "get": {
+                "description": "Returns list of firms",
+                "operationId": "getAllFirms",
+                "parameters": [
+                    {
+                        "description": "Correlation Id",
+                        "in": "header",
+                        "name": "x-transaction-id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "items": {
+                                        "$ref": "#/components/schemas/Firm"
+                                    },
+                                    "type": "array"
+                                }
+                            }
+                        },
+                        "description": "default response"
+                    }
+                },
+                "tags": [
+                    "customer-rest-service"
+                ]
+            }
+        },
+        "/customers/search/{filter}": {
+            "get": {
+                "description": "Returns list of customers with given criterias",
+                "operationId": "search",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "filter",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Correlation Id",
+                        "in": "header",
+                        "name": "x-transaction-id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "items": {
+                                        "$ref": "#/components/schemas/Customer"
+                                    },
+                                    "type": "array"
+                                }
+                            }
+                        },
+                        "description": "default response"
+                    }
+                },
+                "tags": [
+                    "customer-rest-service"
+                ]
+            }
+        },
+        "/customers/{id}": {
+            "delete": {
+                "description": "Deletes a customer",
+                "operationId": "deleteCustomer",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "format": "int64",
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "Correlation Id",
+                        "in": "header",
+                        "name": "x-transaction-id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        "description": "default response"
+                    }
+                },
+                "tags": [
+                    "customer-rest-service"
+                ]
+            },
+            "get": {
+                "description": "Returns customer with given id ",
+                "operationId": "getById",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "format": "int64",
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "Correlation Id",
+                        "in": "header",
+                        "name": "x-transaction-id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Customer"
+                                }
+                            }
+                        },
+                        "description": "default response"
+                    }
+                },
+                "tags": [
+                    "customer-rest-service"
+                ]
+            }
+        },
+        "/customers/{id}/agreement": {
+            "put": {
+                "description": "Updates a customer's agreement",
+                "operationId": "updateAgreement",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "format": "int64",
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "Correlation Id",
+                        "in": "header",
+                        "name": "x-transaction-id"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AgreementDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Customer"
+                                }
+                            }
+                        },
+                        "description": "default response"
+                    }
+                },
+                "tags": [
+                    "customer-rest-service"
+                ]
+            }
+        },
+        "/customers/{id}/characteristic": {
+            "delete": {
+                "description": "Deletes a customer's contact medium",
+                "operationId": "deleteCharacteristic",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "format": "int64",
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "Correlation Id",
+                        "in": "header",
+                        "name": "x-transaction-id"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CharacteristicDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Customer"
+                                }
+                            }
+                        },
+                        "description": "default response"
+                    }
+                },
+                "tags": [
+                    "customer-rest-service"
+                ]
+            },
+            "put": {
+                "description": "Updates a customer's characteristic value",
+                "operationId": "updateCharacteristic",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "format": "int64",
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "Correlation Id",
+                        "in": "header",
+                        "name": "x-transaction-id"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CharacteristicDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Customer"
+                                }
+                            }
+                        },
+                        "description": "default response"
+                    }
+                },
+                "tags": [
+                    "customer-rest-service"
+                ]
+            }
+        },
+        "/customers/{id}/contactmedium": {
+            "delete": {
+                "description": "Deletes a customer's contact medium",
+                "operationId": "deleteContactMedium",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "format": "int64",
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "Correlation Id",
+                        "in": "header",
+                        "name": "x-transaction-id"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ContactMediumDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Customer"
+                                }
+                            }
+                        },
+                        "description": "default response"
+                    }
+                },
+                "tags": [
+                    "customer-rest-service"
+                ]
+            },
+            "put": {
+                "description": "Updates a customer's contact medium",
+                "operationId": "updateContactMedium",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "format": "int64",
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "Correlation Id",
+                        "in": "header",
+                        "name": "x-transaction-id"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ContactMediumDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Customer"
+                                }
+                            }
+                        },
+                        "description": "default response"
+                    }
+                },
+                "tags": [
+                    "customer-rest-service"
+                ]
+            }
+        },
+        "/customers/{id}/permission": {
+            "delete": {
+                "description": "Removes a permission from customer's permissions",
+                "operationId": "removePermission",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "format": "int64",
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "Correlation Id",
+                        "in": "header",
+                        "name": "x-transaction-id"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PermissionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Customer"
+                                }
+                            }
+                        },
+                        "description": "default response"
+                    }
+                },
+                "tags": [
+                    "customer-rest-service"
+                ]
+            },
+            "put": {
+                "description": "Adds a permission customer's permissions",
+                "operationId": "addPermission",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "format": "int64",
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "Correlation Id",
+                        "in": "header",
+                        "name": "x-transaction-id"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PermissionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Customer"
+                                }
+                            }
+                        },
+                        "description": "default response"
+                    }
+                },
+                "tags": [
+                    "customer-rest-service"
+                ]
+            }
+        }
+    },
+    "security": [
+        {
+            "bearerScheme": []
+        }
+    ],
+    "servers": [
+        {
+            "url": "http://localhost:9090/customer-service"
+        }
+    ]
+}
